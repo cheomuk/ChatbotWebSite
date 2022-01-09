@@ -7,5 +7,5 @@
 - HTML, CSS, JS, Python
 
 ## 사용된 툴/사이트
-- VSCode, Postman, Bootstrap, Tensorflow
+- VSCode, Node.js, Postman, Bootstrap, Tensorflow
 
