@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+.gitignore
+.idea
+Preprocess.cpython-38.pyc
+GlobalParams.cpython-38.pyc
+IntentModel.cpython-38.pyc
