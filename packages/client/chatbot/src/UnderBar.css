@@ -1,47 +1,42 @@
-.underBar{
-    background-color: rgb(138, 138, 138);
-    height: 3rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center; 
+.underBar {
+  background-color: rgb(138, 138, 138);
+  height: 3rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
 }
 
-.btnEnter{
-    margin-right: 1rem;
-    position: absolute;
-    right: 1rem;
-    padding: none;
+.btnEnter {
+  margin-right: 1rem;
+  position: absolute;
+  right: 1rem;
+  padding: none;
 }
 
-.chat{
-    font-size: 15px;
-    text-align: center;
-    position: absolute;
-    width: 70%;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%,50%);
-    padding: none;
-    margin: 0 auto;
-    border: 1px solid rgb(155, 155, 155);
-    border-radius: 25px;
+.chat {
+  color: "white";
+  flex: 1;
+  margin-left: 12;
+  border: none;
+  background: transparent;
+  font-size: 1em;
+  outline: none;
+  padding: 20px;
 }
 
-.chatBox{
-    background-color: bisque;
-    color: black;
+.chatBox {
+  background-color: bisque;
+  color: black;
+  width: fit-content;
+  height: "fit-content";
+  padding: 10px;
+  border-radius: 20rem;
+  margin-left: 20px;
 
-
-    width: fit-content;
-    height: 'fit-content';
-    padding: 10px;
-    border-radius: 20rem;
-    margin-left: 20px;
-
-    /* top: 10px;
+  /* top: 10px;
     font-size: 11pt;
     position: relative;
     text-align: right; */
