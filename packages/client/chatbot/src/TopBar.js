@@ -1,18 +1,18 @@
-import { AiOutlineLeft } from 'react-icons/ai';
-import './TopBar.css';
+import { AiOutlineLeft } from "react-icons/ai";
+import "./TopBar.css";
+import swal from "sweetalert";
 
 const TopBar = () => {
-    const askExit = () => alert("정말 대화를 종료하시겠습니까?");
+  const askExit = () => alert("정말 대화를 종료하시겠습니까?");
 
-    return (
-        <>
-            <div className="topBar">
-                <AiOutlineLeft className="btnExit" onClick={askExit} />
-                <p className="chatbotName">챗봇 이름</p>
-            </div>
-        </>
-
-    );
+  return (
+    <>
+      <div className="topBar">
+        <AiOutlineLeft className="btnExit" onClick={askExit} />
+        <p className="chatbotName">CHATBOT</p>
+      </div>
+    </>
+  );
 };
 
 export default TopBar;

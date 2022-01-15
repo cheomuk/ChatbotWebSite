@@ -1,24 +1,25 @@
-.topBar{
-    background-color: rgb(138, 138, 138);
-    color: black; 
-    display: flex;
-    align-items: center;
-    height: 3rem;
-    justify-content: 'center';
+.topBar {
+  background-color: #3b5998;
+  color: white;
+  display: flex;
+  align-items: center;
+  height: 3.5rem;
+  justify-content: "center";
+  font-size: 1.2em;
 }
 
-.btnExit{
-    padding: none;
-    margin-left: 1rem;
+.btnExit {
+  padding: none;
+  margin-left: 1rem;
 }
 
-.chatbotName{
-    /* font-size: calc(10px + 2vmin); */
-    position: absolute;
-    text-align: center;
-    transform: translateX(-50%);
-    margin-left: -1rem;
-    left: 50%;
-    justify-content: center;
-    align-items: center;
+.chatbotName {
+  /* font-size: calc(10px + 2vmin); */
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  margin-left: -1rem;
+  left: 50%;
+  justify-content: center;
+  align-items: center;
 }

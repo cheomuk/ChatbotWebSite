@@ -1,5 +1,5 @@
 .underBar {
-  background-color: rgb(138, 138, 138);
+  background-color: #3b5998;
   height: 3rem;
   position: absolute;
   left: 0;
@@ -9,7 +9,12 @@
   align-items: center;
 }
 
+.underBar .chat {
+  color: white;
+}
+
 .btnEnter {
+  color: white;
   margin-right: 1rem;
   position: absolute;
   right: 1rem;
@@ -17,7 +22,6 @@
 }
 
 .chat {
-  color: "white";
   flex: 1;
   margin-left: 12;
   border: none;
@@ -25,16 +29,17 @@
   font-size: 1em;
   outline: none;
   padding: 20px;
+  width: fit-content;
 }
 
 .chatBox {
-  background-color: bisque;
+  background-color: #d4d4d4;
   color: black;
   width: fit-content;
-  height: "fit-content";
+  height: fit-content;
   padding: 10px;
   border-radius: 20rem;
-  margin-left: 20px;
+  margin: 10px;
 
   /* top: 10px;
     font-size: 11pt;
