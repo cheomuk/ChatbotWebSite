@@ -3,7 +3,7 @@ import "./TopBar.css";
 import swal from "sweetalert";
 
 const TopBar = () => {
-  const askExit = () => alert("정말 대화를 종료하시겠습니까?");
+  const askExit = () => swal("정말 대화를 종료하시겠습니까?", "", "warning");
 
   return (
     <>

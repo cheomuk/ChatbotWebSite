@@ -9,17 +9,12 @@
 }
 
 .btnExit {
-  padding: none;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 .chatbotName {
-  /* font-size: calc(10px + 2vmin); */
   position: absolute;
   text-align: center;
   transform: translateX(-50%);
-  margin-left: -1rem;
   left: 50%;
-  justify-content: center;
-  align-items: center;
 }

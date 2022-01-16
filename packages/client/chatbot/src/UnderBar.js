@@ -11,7 +11,6 @@ function UnderBar() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
     if (doChat === "") {
       return;
     }
