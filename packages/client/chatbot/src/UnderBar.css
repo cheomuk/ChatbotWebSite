@@ -1,7 +1,7 @@
 .underBar {
   background-color: #3b5998;
   height: 3rem;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
@@ -43,5 +43,7 @@
   padding: 10px;
   border-radius: 15rem;
   margin: 10px;
-  float: right;
+  position: relative;
+  right: -98%;
+  transform: translateX(-100%);
 }

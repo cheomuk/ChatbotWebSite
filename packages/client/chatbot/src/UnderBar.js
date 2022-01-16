@@ -15,7 +15,7 @@ function UnderBar() {
       return;
     }
 
-    setDoChats((currentArray) => [doChat, ...currentArray]);
+    setDoChats((currentArray) => [...currentArray, doChat]);
     setDoChat("");
   };
   return (
