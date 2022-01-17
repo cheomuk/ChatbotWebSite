@@ -4,11 +4,13 @@ import UnderBar from './UnderBar';
 
 function App() {
   return (
+    <><head>
+      <TopBar />
+    </head>
       <body>
-        <TopBar />
-        {/* <ChatList data={data} /> */}
         <UnderBar />
       </body>
+    </>
   );
 }
 

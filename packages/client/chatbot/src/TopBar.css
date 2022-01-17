@@ -1,15 +1,15 @@
 .topBar {
   background-color: #3b5998;
-  color: white;
-  display: flex;
-  align-items: center;
+  color: red;
+  /* display: flex; */
+  /* align-items: center; */
   height: 3.5rem;
-  justify-content: "center";
-  font-size: 1.2em;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  /* justify-content: "center"; */
+  /* font-size: 1.2em; */
+  /* position: fixed; */
+  /* top: 0; */
+  /* left: 0; */
+  /* right: 0; */
 }
 
 .btnExit {

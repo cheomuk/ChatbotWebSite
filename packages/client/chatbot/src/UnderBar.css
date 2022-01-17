@@ -47,3 +47,8 @@
   right: -98%;
   transform: translateX(-100%);
 }
+
+.textForm {
+  position: sticky;
+  top: 100px;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import "./UnderBar.css";
-import Swal from "sweetalert2";
+import StopChat from "./StopChat";
 
 function UnderBar() {
   const [doChat, setDoChat] = useState("");
@@ -10,34 +10,8 @@ function UnderBar() {
       <label for="formFile" class="form-label"></label>
       <input class="form-control" type="file" id="formFile" />
     </div>,
-    //     <div>
-    //      function removeCheck() {
-    //       if (confirm("정말 삭제하시겠습니까??") == true){
-    //         document.removefrm.submit();
-    //       }else{   //취소
-    //         return false;
-    //       }
-    // }
-    //     </div>,
     <button>메시지 보내기</button>,
-    <button
-      className="stopChat"
-      onClick={() =>
-        Swal.fire({
-          icon: "warning",
-          html: "정말로 대화를 종료하시겠습니까?",
-          // 취소 버튼
-          showCancelButton: true,
-          // 네 버튼
-          showCloseButton: true,
-          focusConfirm: false,
-          cancelButtonText: "cancel",
-          confirmButtonText: "ok",
-        })
-      }
-    >
-      대화 종료
-    </button>,
+    <StopChat />
   ]);
 
   const onChange = (event) => setDoChat(event.target.value);
@@ -53,12 +27,15 @@ function UnderBar() {
   };
   return (
     <>
+    <form className="textForm">
       {/* 제이쿼리..? */}
       {doChats.map((item, index) => (
         <div className="chatBox" key={index}>
           {item}
         </div>
       ))}
+    </form>
+
       {/* 언더바 레이아웃 및 이벤트 등록 */}
       <div className="underBar">
         <form onSubmit={onSubmit}>
