@@ -1,6 +1,8 @@
 import { AiOutlineLeft } from "react-icons/ai";
 import "./TopBar.css";
 import Swal from "sweetalert2";
+import "./SelectFile";
+import SelectFile from "./SelectFile";
 
 const TopBar = () => {
   const askExit = () =>
@@ -22,6 +24,7 @@ const TopBar = () => {
         <AiOutlineLeft className="btnExit" onClick={askExit} />
         <p className="chatbotName">CHATBOT</p>
       </div>
+      <SelectFile />
     </>
   );
 };
