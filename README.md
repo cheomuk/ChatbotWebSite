@@ -14,3 +14,7 @@
 ## 사용된 툴/사이트
 - VSCode, Node.js, Postman, Bootstrap, Tensorflow, React
 
+## 구현 주의사항
+
+- server 폴더 내 model/db의 MySQL 입력 정보는 직접 입력해야 합니다.
+
