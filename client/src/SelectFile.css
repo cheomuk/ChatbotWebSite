@@ -1,0 +1,12 @@
+.btnFolder {
+  color: white;
+  position: fixed;
+  top: 0.7rem;
+  right: 0.5rem;
+  z-index: 2;
+}
+
+.img {
+ max-height: 400px;
+ max-width: 400px;
+}
