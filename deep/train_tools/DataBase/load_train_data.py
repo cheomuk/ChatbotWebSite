@@ -1,6 +1,6 @@
 import pymysql
 import openpyxl
-from config.DatabaseConfig import *  # DB 접속 정보 불러오기
+from deep.config.DatabaseConfig import *  # DB 접속 정보 불러오기
 
 
 # 학습 데이터 초기화

@@ -1,5 +1,5 @@
 import pymysql
-from config.DatabaseConfig import *  # DB 접속 정보 불러오기
+from deep.config.DatabaseConfig import *  # DB 접속 정보 불러오기
 
 db = None
 try:

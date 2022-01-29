@@ -1,13 +1,13 @@
-from config.DatabaseConfig import *
-from Database import Database
-from Preprocess import Preprocess
-from FindAnswer import FindAnswer
-from models.intent.IntentModel import IntentModel
-from models.ner.NerModel import NerModel
+from deep.config.DatabaseConfig import *
+from deep.Database import Database
+from deep.Preprocess import Preprocess
+from deep.FindAnswer import FindAnswer
+from deep.models.intent.IntentModel import IntentModel
+from deep.models.ner.NerModel import NerModel
 
 # 전처리 객체 생성
-p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
-               userdic='../user_dic.tsv')
+p = Preprocess(word2index_dic='../deep/train_tools/dict/chatbot_dict.bin',
+               userdic='../deep/user_dic.tsv')
 
 # 질문/답변 학습 DB 연결 객체 생성
 db = Database(
@@ -19,12 +19,12 @@ db.connect()  # DB 연결
 query = input()
 
 # 의도 파악
-intent = IntentModel(model_name='../models/intent/intent_model.h5', prep=p)
+intent = IntentModel(model_name='../deep/models/intent/intent_model.h5', prep=p)
 predict = intent.predict_class(query)
 intent_name = intent.labels[predict]
 
 # 개체명 인식
-ner = NerModel(model_name='../models/ner/ner_model.h5', prep=p)
+ner = NerModel(model_name='../deep/models/ner/ner_model.h5', prep=p)
 predicts = ner.predict(query)
 ner_tags = ner.predict_tags(query)
 

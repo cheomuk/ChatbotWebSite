@@ -4,8 +4,8 @@ import tensorflow as tf
 from tensorflow.keras import preprocessing
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Embedding, Dense, Dropout, Conv1D, GlobalMaxPool1D, concatenate
-from config.GlobalParams import MAX_SEQ_LEN
-from Preprocess import Preprocess
+from deep.config.GlobalParams import MAX_SEQ_LEN
+from deep.Preprocess import Preprocess
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # 데이터 읽어오기
@@ -13,8 +13,8 @@ train_file = "total_train_data.csv"
 data = pd.read_csv(train_file, delimiter=',')
 queries = data['query'].tolist()
 intents = data['intent'].tolist()
-p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
-               userdic='../user_dic.tsv')
+p = Preprocess(word2index_dic='../deep/train_tools/dict/chatbot_dict.bin',
+               userdic='../deep/user_dic.tsv')
 
 # 단어 시퀀스 생성
 sequences = []
