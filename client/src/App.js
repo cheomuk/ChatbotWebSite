@@ -1,15 +1,14 @@
-import './App.css';
-import TopBar from './TopBar';
-import UnderBar from './UnderBar';
+import "./App.css";
+import TopBar from "./TopBar";
+import UnderBar from "./UnderBar";
+import SelectFile from "./SelectFile";
 
 function App() {
   return (
-    <><head>
+    <>
       <TopBar />
-    </head>
-      <body>
-        <UnderBar />
-      </body>
+      <UnderBar />
+      <SelectFile />
     </>
   );
 }
