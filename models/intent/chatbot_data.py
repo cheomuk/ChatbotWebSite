@@ -4,6 +4,8 @@ import tensorflow as tf
 from tensorflow.keras import preprocessing
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Embedding, Dense, Dropout, Conv1D, GlobalMaxPool1D, concatenate
+from config.GlobalParams import MAX_SEQ_LEN
+from Preprocess import Preprocess
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # 데이터 읽어오기
@@ -11,10 +13,8 @@ train_file = "total_train_data.csv"
 data = pd.read_csv(train_file, delimiter=',')
 queries = data['query'].tolist()
 intents = data['intent'].tolist()
-
-from Preprocess import Preprocess
-p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict.bin',
-               userdic='../../utils/user_dic.tsv')
+p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
+               userdic='../user_dic.tsv')
 
 # 단어 시퀀스 생성
 sequences = []
@@ -26,7 +26,6 @@ for sentence in queries:
 
 # 단어 인덱스 시퀀스 벡터 생성
 # 단어 시퀀스 벡터 크기
-from config.GlobalParams import MAX_SEQ_LEN
 padded_seqs = preprocessing.sequence.pad_sequences(sequences, maxlen=MAX_SEQ_LEN, padding='post')
 
 # 학습용, 검증용, 테스트용 데이터셋 생성

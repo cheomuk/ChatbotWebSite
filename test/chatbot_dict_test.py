@@ -9,7 +9,7 @@ f.close()
 sent = input()
 
 # 전처리 객체 생성
-p = Preprocess(userdic='../utils/user_dic.tsv')
+p = Preprocess(userdic='../user_dic.tsv')
 
 # 형태소 분석기 실행
 pos = p.pos(sent)
