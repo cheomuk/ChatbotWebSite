@@ -1,16 +1,21 @@
 ﻿module.exports = function(sequelize, DataTypes){
     return sequelize.define('chatlist',{
         id: {
-            type:DataTypes.STRING(250), // string 250자까지 허용
-            autoIncrement:true,
-            primaryKey:true,
-            allwNull:false
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+            allwNull: false
         },
-        name: {
-            type:DataTypes.STRING(64)
+        sender: {
+            type: DataTypes.STRING(32),
+            allwNull: false
         },
-        message:{
-            type:DataTypes.TEXT
+        type: {
+            type: DataTypes.STRING(32),
+            allwNull: false
+        },
+        data: {
+            type: DataTypes.TEXT
         }
     })
 }
