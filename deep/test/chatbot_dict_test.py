@@ -1,15 +1,15 @@
 import pickle
-from Preprocess import Preprocess
+from deep.Preprocess import Preprocess
 
 # 단어 사전 불러오기
-f = open("../train_tools/dict/chatbot_dict.bin", "rb")
+f = open("../deep/train_tools/dict/chatbot_dict.bin", "rb")
 word_index = pickle.load(f)
 f.close()
 
 sent = input()
 
 # 전처리 객체 생성
-p = Preprocess(userdic='../utils/user_dic.tsv')
+p = Preprocess(userdic='../deep/user_dic.tsv')
 
 # 형태소 분석기 실행
 pos = p.pos(sent)

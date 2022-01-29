@@ -2,7 +2,8 @@ import os
 import tensorflow as tf
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras import preprocessing
-from Preprocess import Preprocess
+from deep.config.GlobalParams import MAX_SEQ_LEN
+from deep.Preprocess import Preprocess
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
@@ -26,9 +27,6 @@ class IntentModel:
         # 문장내 키워드 추출(불용어 제거)
         keywords = self.p.get_keywords(pos, without_tag=True)
         sequences = [self.p.get_wordidx_sequence(keywords)]
-
-        # 단어 시퀀스 벡터 크기
-        from config.GlobalParams import MAX_SEQ_LEN
 
         # 패딩처리
         padded_seqs = preprocessing.sequence.pad_sequences(sequences, maxlen=MAX_SEQ_LEN, padding='post')
