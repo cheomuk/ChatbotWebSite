@@ -7,6 +7,7 @@
   bottom: 0;
   display: flex;
   align-items: center;
+  z-index: 1;
 }
 
 .underBar .chat {
@@ -35,20 +36,42 @@
 }
 
 /* 말풍선 */
-.chatBox {
+.chatUser {
+  width: fit-content;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  /* right:-98%; */
+  /* transform: translateX(-100%); */
+}
+
+.chatMessage {
   background-color: #d4d4d4;
   color: black;
-  width: fit-content;
   height: fit-content;
   padding: 10px;
   border-radius: 15rem;
-  margin: 10px;
-  position: relative;
-  right: -98%;
-  transform: translateX(-100%);
 }
 
-.textForm {
-  position: sticky;
-  top: 100px;
+.chatUser:last-child {
+  margin-bottom: 56px;
+}
+.chatUser:first-child {
+  margin-top: 64px;
+}
+
+.showTime {
+  color: gray;
+  font-size: small;
+  margin-left: 10px;
+  padding-right: 5px;
+  /* margin-top: 100px; */
+  /* margin-bottom: 200px; */
+}
+
+.onDeleteClick {
+  background-color: transparent;
+  color: gray;
+  /* padding: 2px; */
+  border: none;
 }
