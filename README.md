@@ -12,7 +12,7 @@
 - HTML, CSS, JS, Python
 
 ## 사용된 툴/사이트
-- VSCode, Node.js, Postman, Bootstrap, Tensorflow, React
+- VSCode, Node.js, Postman, Tensorflow, React
 
 ## 구현 주의사항
 
