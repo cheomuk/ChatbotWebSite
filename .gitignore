@@ -107,3 +107,8 @@ dist
 Preprocess.cpython-38.pyc
 GlobalParams.cpython-38.pyc
 IntentModel.cpython-38.pyc
+Database.cpython-38.pyc
+FindAnswer.cpython-38.pyc
+Server.cpython-38.pyc
+DatabaseConfig.cpython-38.pyc
+NerModel.cpython-38.pyc

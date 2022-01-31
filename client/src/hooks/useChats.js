@@ -19,7 +19,10 @@ const getDatetime = (date) => {
  * error - 서버 통신 에러 메세지입니다.
  * 
  * send(sender, message) - 닉네임, 메세지 전달 해주시면 됩니다. 메세지가 서버에 전송됩니다.
- * onsubmit에엣 추가
+ * <<<<<<< eyoung
+ * onsubmit에 추가
+ * =======
+ * >>>>>>> main
  * 
  * remove - id 전달 해주시면 됩니다. 메세지가 서버에서 삭제됩니다.
  */
@@ -27,6 +30,7 @@ export const useChats = () => {
   const [chats, setChats] = useState([]);
 
   const { socket, error } = useSocket('ciart.synology.me:4000', { transports: ['websocket'] });
+  const { socket, error } = useSocket('/', { transports: ['websocket'] });
   
   useEffect(() => {
     socket.on('send', (id, sender, message, date) => {
