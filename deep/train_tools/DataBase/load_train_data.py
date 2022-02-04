@@ -25,11 +25,11 @@ def insert_data(db, xls_row):
     intent, ner, query, answer, answer_img_url = xls_row
 
     sql = '''
-        INSERT chatbot_train_data(intent, ner, query, answer, answer_image)
+        INSERT chatbot_train_data(intent, ner, query, answer)
         values(
-            '%s', '%s', '%s', '%s', '%s'
+            '%s', '%s', '%s', '%s'
         )
-    ''' % (intent.value, ner.value, query.value, answer.value, answer_img_url.value)
+    ''' % (intent.value, ner.value, query.value, answer.value)
 
     # 엑셀에서 불러온 cell에 데이터가 없는 경우 null로 치환
     sql = sql.replace("'None'", "null")
@@ -40,7 +40,7 @@ def insert_data(db, xls_row):
         db.commit()
 
 
-train_file = './train_data.xlsx'
+train_file = 'train_data.xlsx'
 db = None
 try:
     db = pymysql.connect(
@@ -48,6 +48,7 @@ try:
         user=DB_USER,
         passwd=DB_PASSWORD,
         db=DB_NAME,
+        port=DB_PORT,
         charset='utf8'
     )
 
