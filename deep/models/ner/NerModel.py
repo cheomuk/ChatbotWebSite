@@ -5,6 +5,7 @@ from tensorflow.keras.models import Model, load_model
 from tensorflow.keras import preprocessing
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
+
 # 개체명 인식 모델 모듈
 class NerModel:
     def __init__(self, model_name, preprocess):
