@@ -1,9 +1,13 @@
 import os
 import tensorflow as tf
 from tensorflow.keras import preprocessing
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Embedding, Dense, TimeDistributed, Bidirectional
+from tensorflow.keras.optimizers import Adam
 from sklearn.model_selection import train_test_split
+from seqeval.metrics import f1_score, classification_report
 import numpy as np
-from Preprocess import Preprocess
+from deep.Preprocess import Preprocess
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
@@ -25,8 +29,8 @@ def read_file(file_name):
 
 
 # 전처리 객체 생성
-p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict.bin',
-               userdic='../../utils/user_dic.tsv')
+p = Preprocess(word2index_dic='../deep/train_tools/dict/chatbot_dict.bin',
+               userdic='../deep/user_dic.tsv')
 
 # 학습용 말뭉치 데이터를 불러옴
 corpus = read_file('ner_train.txt')
@@ -44,11 +48,9 @@ for t in corpus:
     sentences.append(sentence)
     tags.append(bio_tag)
 
-print("샘플 크기 : \n", len(sentences))
-print("0번째 샘플 단어 시퀀스 : \n", sentences[0])
-print("0번째 샘플 bio 태그 : \n", tags[0])
-print("샘플 단어 시퀀스 최대 길이 : ", max(len(l) for l in sentences))
-print("샘플 단어 시퀀스 평균 길이 : ", (sum(map(len, sentences)) / len(sentences)))
+print("Sample size : ", len(sentences))
+print("Sample word sequence max length : ", max(len(l) for l in sentences))
+print("Sample word sequence average length : ", (sum(map(len, sentences)) / len(sentences)))
 
 # 토크나이저 정의
 tag_tokenizer = preprocessing.text.Tokenizer(lower=False)  # 태그 정보는 lower=False 소문자로 변환하지 않는다.
@@ -57,8 +59,8 @@ tag_tokenizer.fit_on_texts(tags)
 # 단어 사전 및 태그 사전 크기
 vocab_size = len(p.word_index) + 1
 tag_size = len(tag_tokenizer.word_index) + 1
-print("BIO 태그 사전 크기 :", tag_size)
-print("단어 사전 크기:", vocab_size)
+print("BIO tag size :", tag_size)
+print("Vocabulary library size:", vocab_size)
 
 # 학습용 단어 시퀀스 생성
 x_train = [p.get_wordidx_sequence(sent) for sent in sentences]
@@ -79,22 +81,18 @@ x_train, x_test, y_train, y_test = train_test_split(x_train, y_train, test_size=
 y_train = tf.keras.utils.to_categorical(y_train, num_classes=tag_size)
 y_test = tf.keras.utils.to_categorical(y_test, num_classes=tag_size)
 
-print("학습 샘플 시퀀스 형상 : ", x_train.shape)
-print("학습 샘플 레이블 형상 : ", y_train.shape)
-print("테스트 샘플 시퀀스 형상 : ", x_test.shape)
-print("테스트 샘플 레이블 형상 : ", y_test.shape)
+print("Train sequence : ", x_train.shape)
+print("Train label : ", y_train.shape)
+print("Test sequence : ", x_test.shape)
+print("Test label : ", y_test.shape)
 
 # 모델 정의(Bi-LSTM)
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Embedding, Dense, TimeDistributed, Dropout, Bidirectional
-from tensorflow.keras.optimizers import Adam
-
 model = Sequential()
 model.add(Embedding(input_dim=vocab_size, output_dim=30, input_length=max_len, mask_zero=True))
 model.add(Bidirectional(LSTM(200, return_sequences=True, dropout=0.50, recurrent_dropout=0.25)))
 model.add(TimeDistributed(Dense(tag_size, activation='softmax')))
 model.compile(loss='categorical_crossentropy', optimizer=Adam(0.01), metrics=['accuracy'])
-model.fit(x_train, y_train, batch_size=128, epochs=10)
+model.fit(x_train, y_train, batch_size=64, epochs=10)
 
 print("평가 결과 : ", model.evaluate(x_test, y_test)[1])
 model.save('ner_model.h5')
@@ -111,9 +109,6 @@ def sequences_to_tag(sequences):  # 예측값을 index_to_ner를 사용하여 �
         result.append(temp)
     return result
 
-
-# F1 스코어 계산을 위해 사용
-from seqeval.metrics import f1_score, classification_report
 
 # 테스트 데이터셋의 NER 예측
 y_predicted = model.predict(x_test)

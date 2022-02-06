@@ -3,6 +3,9 @@
 ## 스터디 목표
 - 실시간으로 대화할 수 있는 챗봇을 웹사이트 상에서 구현한다.
 
+## 프로젝트 기간
+- 2021.12.31 ~ 2022.02.11
+
 ## 프로젝트 참여자 및 역할 분담
 - 딥러닝: 강예성
 - 백엔드: 박현호, 안호빈
@@ -12,9 +15,9 @@
 - HTML, CSS, JS, Python
 
 ## 사용된 툴/사이트
-- VSCode, Node.js, Postman, Bootstrap, Tensorflow, React
+- VSCode, Node.js, Postman, Tensorflow, React
 
 ## 구현 주의사항
 
 - server 폴더 내 model/db의 MySQL 입력 정보는 직접 입력해야 합니다.
-
+- 테이블과 컬럼 정보는 model 폴더 내 {테이블}.js 파일을 참고하시면 되겠습니다.
