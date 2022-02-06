@@ -1,5 +1,5 @@
 .underBar {
-  background-color: #3b5998;
+  background-color: rgb(64, 113, 219);
   height: 3rem;
   position: fixed;
   left: 0;
@@ -21,62 +21,6 @@
   right: 1rem;
 }
 
-/* 채팅 input*/
-.chat {
-  margin-left: 12;
-  border: none;
-  background: transparent;
-  font-size: 1em;
-  outline: none;
-  padding: 20px;
-  position: absolute;
-  width: 90%;
-  transform: translatey(50%);
-  bottom: 50%;
-}
-
-/* 말풍선 */
-.chatUser {
-  width: fit-content;
-  padding: 10px;
-  margin: 10px;
-  position: relative;
-  /* right:-98%; */
-  /* transform: translateX(-100%); */
-}
-
-.chatMessage {
-  background-color: #d4d4d4;
-  color: black;
-  height: fit-content;
-  padding: 10px;
-  border-radius: 15rem;
-}
-
-.chatUser:last-child {
-  margin-bottom: 56px;
-}
-.chatUser:first-child {
-  margin-top: 64px;
-}
-
-.showTime {
-  color: gray;
-  font-size: small;
-  margin-left: 10px;
-  padding-right: 5px;
-  /* margin-top: 100px; */
-  /* margin-bottom: 200px; */
-}
-
-.onDeleteClick {
-  background-color: transparent;
-  color: gray;
-  /* padding: 2px; */
-  border: none;
-}
-
-.botIcon {
-  color: #3b5998;
-  margin-right: 10px;
+::placeholder {
+  color: white;
 }
