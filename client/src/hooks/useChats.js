@@ -30,11 +30,10 @@ export const useChats = () => {
   const [chats, setChats] = useState([]);
 
   const { socket, error } = useSocket('ciart.synology.me:4000', { transports: ['websocket'] });
-  const { socket, error } = useSocket('/', { transports: ['websocket'] });
   
   useEffect(() => {
-    socket.on('send', (id, sender, message, date) => {
-      setChats((value) => value.concat({id, sender, message, date: getDatetime(date)}));
+    socket.on('send', (id, type, sender, data, time) => {
+      setChats((value) => value.concat({id, type, sender, data, time: getDatetime(time)}));
     })
 
     socket.on('remove', (id) => {
@@ -42,8 +41,8 @@ export const useChats = () => {
     })
   }, [socket]);
 
-  const send = (sender, message) => {
-    socket.emit('send', sender, message);
+  const send = (type, sender, data) => {
+    socket.emit('send', type, sender, data);
   };
 
   const remove = (id) => {

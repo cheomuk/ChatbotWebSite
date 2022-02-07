@@ -32,10 +32,10 @@ function UnderBar() {
 
     nextId.current += 1;
 
-    send(nickName,message);
+    send('text', nickName, message);
     if (message === "안녕") {
       nextId.current += 1;
-      send('bot', "안녕하세요~~~~");
+      send('text', 'bot', "안녕하세요~~~~");
     }
 
     setMessage("");
@@ -93,7 +93,7 @@ function UnderBar() {
                 item.sender !== nickName ? { float: "left" } : { float: "right" }
               }
             >
-              {item.date}
+              {item.time}
             </span>
           </div>
         ))}

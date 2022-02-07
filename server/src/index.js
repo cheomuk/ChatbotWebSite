@@ -18,14 +18,18 @@ io.on('connection', (socket) => {
   /**
    * 채팅 수신
    */
-  socket.on('send', async (sender, message) => {
+  socket.on('send', async (type, sender, data) => {
+    if (type == 'image') {
+      //
+    }
+
     const chat = await db.chatlist.create({
-      type: 'text',
-      sender: sender,
-      data: message,
+      type,
+      sender,
+      data,
     });
 
-    io.emit('send', chat.id, chat.sender, chat.data, chat.createdAt);
+    io.emit('send', chat.id, chat.type, chat.sender, chat.data, chat.createdAt);
   });
 
   /**
@@ -34,7 +38,7 @@ io.on('connection', (socket) => {
   socket.on('remove', async (id) => {
     await db.chatlist.destroy({
       where: {
-        id
+        id,
       }
     });
 
