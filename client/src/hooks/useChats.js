@@ -31,11 +31,7 @@ const getDatetime = (date) => {
 export const useChats = () => {
   const [chats, setChats] = useState([]);
 
-  const { socket, error } = useSocket("ciart.synology.me:4000", {
-    transports: ["websocket"],
-  });
-
-  const { socket, error } = useSocket('ciart.synology.me:4000', { transports: ['websocket'] });
+  //const { socket, error } = useSocket('ciart.synology.me:4000', { transports: ['websocket'] });
   const { socket, error } = useSocket('/', { transports: ['websocket'] });
   
   useEffect(() => {
