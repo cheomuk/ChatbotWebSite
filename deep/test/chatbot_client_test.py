@@ -22,12 +22,12 @@ while True:
         'Query': query,
         'BotType': "MyService"
     }
-    message = json.dumps(json_data)
+    message = json.dumps(json_data, ensure_ascii=False)
+    cmd = message.encode()
     mySocket.send(message.encode())
-
     # 챗봇 엔진 답변 출력
-    data = mySocket.recv(2048).decode()
-    ret_data = json.loads(data)  # json 형태 문자열을 json 객체로 변환
+    data = mySocket.recv(1024)
+    ret_data = json.loads(data.decode())  # json 형태 문자열을 json 객체로 변환
     print("답변 : ")
     print(ret_data['Answer'])
     print("\n")

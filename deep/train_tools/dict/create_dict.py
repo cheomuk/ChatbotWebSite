@@ -14,7 +14,7 @@ def read_corpus_data(filename):
 
 
 # 말뭉치 데이터 가져오기
-corpus_data = read_corpus_data('./corpus.txt')
+corpus_data = read_corpus_data('corpus.txt')
 
 # 말뭉치 데이터에서 키워드만 추출해서 사전 리스트 생성
 p = Preprocess()
@@ -31,7 +31,7 @@ tokenizer.fit_on_texts(dict)
 word_index = tokenizer.word_index
 
 # 사전 파일 생성
-f = open("chatbot_dict.bin", "wb")
+f = open('chatbot_dict.bin', "wb")
 try:
     pickle.dump(word_index, f)
 except Exception as e:

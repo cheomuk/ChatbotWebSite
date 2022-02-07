@@ -29,8 +29,8 @@ def read_file(file_name):
 
 
 # 전처리 객체 생성
-p = Preprocess(word2index_dic='../deep/train_tools/dict/chatbot_dict.bin',
-               userdic='../deep/user_dic.tsv')
+p = Preprocess(word2index_dic='/Users/admin/MacOS_System/Projects/studyNodeJs/deep/train_tools/dict/chatbot_dict.bin',
+               userdic='/Users/admin/MacOS_System/Projects/studyNodeJs/deep/user_dic.tsv')
 
 # 학습용 말뭉치 데이터를 불러옴
 corpus = read_file('ner_train.txt')
