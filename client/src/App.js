@@ -60,9 +60,6 @@ function App() {
     }
 
     send(nickName, message);
-    if (message === "안녕") {
-      send('bot', "안녕하세요~~~~");
-    }
 
     setMessage("");
   };
