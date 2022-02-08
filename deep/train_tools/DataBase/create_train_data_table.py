@@ -1,5 +1,5 @@
 import pymysql
-from deep.config.DatabaseConfig import*
+from config.DatabaseConfig import*
 
 db = None
 try:

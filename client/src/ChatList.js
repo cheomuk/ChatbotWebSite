@@ -44,7 +44,7 @@ const ChatList = (props) => {
             name={item.sender}
             size="2.5rem"
             style={
-              item.sender === nickName ? { display: "none" } : { float: "left" }
+              (item.sender === nickName) ||(item.sender ==='bot') ? { display: "none" } : { float: "left" }
             }
           />
 
