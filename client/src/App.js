@@ -40,7 +40,7 @@ function App() {
     reader.onload = function() {
       Jimp.read(this.result).then(image => {
         image.resize(200, Jimp.AUTO).quality(70).getBase64(image.getMIME(), (err, value) => {
-          sendImage(nickName, value);
+          sendImage(nickName, value.slice(22));
         });
       })
     };
