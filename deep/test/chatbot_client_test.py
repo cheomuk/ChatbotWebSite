@@ -1,9 +1,10 @@
 import socket
 import json
+from config.DatabaseConfig import *
 
 # 챗봇 엔진 서버 접속 정보
-host = "0.0.0.0"  # 챗봇 엔진 서버 IP 주소
-port = 3306  # 챗봇 엔진 서버 통신 포트
+host = DB_HOST  # 챗봇 엔진 서버 IP 주소
+port = DB_PORT  # 챗봇 엔진 서버 통신 포트
 
 # 클라이언트 프로그램 시작
 while True:

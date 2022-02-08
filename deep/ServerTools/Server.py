@@ -1,20 +1,34 @@
-import socket
+import asyncio
+import websockets
+import pymysql
+from ChatbotTest import ChatbotTest
+from config.DatabaseConfig import *
 
 
-class Server:
-    def __init__(self, srv_port, listen_num):
-        self.port = srv_port
-        self.listen = listen_num
-        self.mySock = None
+async def accept(websocket, path):
+    while True:
+        data = await websocket.recv()
+        process = ChatbotTest(data)
 
-    def create_sock(self):
-        self.mySock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.mySock.bind(("127.0.0.1", int(self.port)))
-        self.mySock.listen(int(self.listen))
-        return self.mySock
+        print("receive : " + data)
+        await websocket.send(process.answer)
 
-    def ready_for_client(self):
-        return self.mySock.accept()
+# db = None
+# try:
+#     db = pymysql.connect(
+#         host=DB_HOST,
+#         user=DB_USER,
+#         passwd=DB_PASSWORD,
+#         db=DB_NAME,
+#         port=DB_PORT,
+#         charset='utf8'
+#     )
+#
+# except Exception as e:
+#     print(e)
 
-    def get_sock(self):
-        return self.mySock
+start_server = websockets.serve(accept, LOCAL_HOST, LOCAL_PORT)
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()
+# if db is not None:
+#     db.close()
