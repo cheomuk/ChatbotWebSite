@@ -4,8 +4,8 @@ import tensorflow as tf
 from tensorflow.keras import preprocessing
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Embedding, Dense, Dropout, Conv1D, GlobalMaxPool1D, concatenate
-from deep.config.GlobalParams import MAX_SEQ_LEN
-from deep.Preprocess import Preprocess
+from config.GlobalParams import MAX_SEQ_LEN
+from Preprocess import Preprocess
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # 데이터 읽어오기

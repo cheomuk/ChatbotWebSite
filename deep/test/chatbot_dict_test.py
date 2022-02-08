@@ -1,5 +1,5 @@
 import pickle
-from deep.Preprocess import Preprocess
+from Preprocess import Preprocess
 
 # 단어 사전 불러오기
 f = open('../train_tools/dict/chatbot_dict.bin', "rb")
