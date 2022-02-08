@@ -11,8 +11,8 @@ data = pd.read_csv(train_file, delimiter=',')
 queries = data['query'].tolist()
 intents = data['intent'].tolist()
 
-p = Preprocess(word2index_dic='/train_tools/dict/chatbot_dict.bin',
-               userdic='/user_dic.tsv')
+p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
+               userdic='../user_dic.tsv')
 
 sequences = []
 for sentencs in queries:

@@ -13,7 +13,8 @@ class ChatbotTest:
                        userdic='../user_dic.tsv')
 
         # 질문/답변 학습 DB 연결 객체 생성
-        db = Database(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, db_name=DB_NAME)
+        db = Database(host=LOCAL_HOST, user=LOCAL_USER,
+                      password=LOCAL_PASSWORD, db_name=LOCAL_NAME)
         db.connect()  # DB 연결
 
     # 의도 파악
