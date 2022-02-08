@@ -1,3 +1,4 @@
+import Jimp from "jimp/es";
 import "./App.css";
 import TopBar from "./TopBar";
 import ChatList from "./ChatList";
@@ -37,8 +38,11 @@ function App() {
 
     const reader = new FileReader();
     reader.onload = function() {
-      const base64 = this.result.replace(/.*base64,/, '');
-      sendImage(nickName, base64);
+      Jimp.read(this.result).then(image => {
+        image.resize(200, Jimp.AUTO).quality(70).getBase64(image.getMIME(), (err, value) => {
+          sendImage(nickName, value);
+        });
+      })
     };
     reader.readAsDataURL(selectedFile);
   };
