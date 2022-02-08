@@ -7,7 +7,7 @@ from tensorflow.keras.optimizers import Adam
 from sklearn.model_selection import train_test_split
 from seqeval.metrics import f1_score, classification_report
 import numpy as np
-from deep.Preprocess import Preprocess
+from Preprocess import Preprocess
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
@@ -29,8 +29,8 @@ def read_file(file_name):
 
 
 # 전처리 객체 생성
-p = Preprocess(word2index_dic='/Users/admin/MacOS_System/Projects/studyNodeJs/deep/train_tools/dict/chatbot_dict.bin',
-               userdic='/Users/admin/MacOS_System/Projects/studyNodeJs/deep/user_dic.tsv')
+p = Preprocess(word2index_dic='/train_tools/dict/chatbot_dict.bin',
+               userdic='/user_dic.tsv')
 
 # 학습용 말뭉치 데이터를 불러옴
 corpus = read_file('ner_train.txt')

@@ -2,21 +2,21 @@ import threading
 import json
 from Database import Database
 from config.DatabaseConfig import *
-from Server import Server
+from ServerTools.Server import Server
 from Preprocess import Preprocess
 from models.intent.IntentModel import IntentModel
 from models.ner.NerModel import NerModel
 from FindAnswer import FindAnswer
 
 # 전처리 객체 생성
-p = Preprocess(word2index_dic='../deep/train_tools/dict/chatbot_dict.bin',
-               userdic='user_dic.tsv')
+p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
+               userdic='../user_dic.tsv')
 
 # 의도 파악 모델
-intent = IntentModel(model_name='../deep/models/intent/intent_model.h5', prep=p)
+intent = IntentModel(model_name='../models/intent/intent_model.h5', prep=p)
 
 # 개체명 인식 모델
-ner = NerModel(model_name='../deep/models/ner/ner_model.h5', prep=p)
+ner = NerModel(model_name='../models/ner/ner_model.h5', prep=p)
 
 
 def to_client(conn, addr, params):
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     print("DB 접속")
 
     # 봇 서버 동작
-    port = 5050
+    port = 5000
     listen = 100
     bot = Server(port, listen)
     bot.create_sock()

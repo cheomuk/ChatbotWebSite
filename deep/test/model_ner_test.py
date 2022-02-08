@@ -1,5 +1,5 @@
-from deep.Preprocess import Preprocess
-from deep.models.ner.NerModel import NerModel
+from Preprocess import Preprocess
+from models.ner.NerModel import NerModel
 
 p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
                userdic='../user_dic.tsv')
