@@ -1,12 +1,15 @@
 const express = require('express'); // require 함수를 이용해 express 도구를 꺼내온다.
-//const helmet = require('helmet'); //
-//const ejs = require('ejs');
+const { nanoid } = require('nanoid');
+const fs = require('fs').promises;
+const path = require('path')
 const app = express();
 const db = require('./model/db');
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
-http.listen(4000, () => {
+app.use('/public', express.static(path.join(__dirname, '../public')));
+
+server.listen(4000, () => {
   console.log('Connect at 4000');
 });
 
@@ -20,7 +23,13 @@ io.on('connection', (socket) => {
    */
   socket.on('send', async (type, sender, data) => {
     if (type == 'image') {
-      //
+      const buffer = Buffer.from(data, 'base64');
+
+      const imageName = nanoid();
+
+      await fs.writeFile(path.join(__dirname, `../public/image/${imageName}`), buffer).catch(console.error);
+
+      data = imageName;
     }
 
     const chat = await db.chatlist.create({
