@@ -59,7 +59,7 @@ const ChatList = (props) => {
             }}
           >
             {item.isImage ? (
-              <img src={item.message} className="img" alt="파일첨부" />
+              <img src={`public/image/${item.message}`} className="img" alt="파일첨부" />
             ) : (
               item.message
             )}

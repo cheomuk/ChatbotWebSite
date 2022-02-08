@@ -31,15 +31,13 @@ const getDatetime = (date) => {
 export const useChats = () => {
   const [chats, setChats] = useState([]);
 
-  //const { socket, error } = useSocket('ciart.synology.me:4000', { transports: ['websocket'] });
+  // const { socket, error } = useSocket('https://chat.pdom.me', { transports: ['websocket'] });
   const { socket, error } = useSocket('/', { transports: ['websocket'] });
-  
+
   useEffect(() => {
-    socket.on("send", (id, sender, message, date) => {
-      setChats((value) =>
-        value.concat({ id, sender, message, date: getDatetime(date) })
-      );
-    });
+    socket.on('send', (id, type, sender, data, time) => {
+      setChats((value) => value.concat({id, isImage: type === 'image', sender, message: data, date: getDatetime(time)}));
+    })
 
     socket.on("remove", (id) => {
       setChats((value) => value.filter((chat) => chat.id !== id));
@@ -47,23 +45,15 @@ export const useChats = () => {
   }, [socket]);
 
   const send = (sender, message) => {
-    socket.emit("send", sender, message);
+    socket.emit('send', 'text', sender, message);
   };
 
   const remove = (id) => {
     socket.emit("remove", id);
   };
 
-  const sendImage = (sender, url) => {
-    setChats((value) =>
-      value.concat({
-        id: 0,
-        sender,
-        message: url,
-        date: getDatetime(Date.now()),
-        isImage: true,
-      })
-    );
+  const sendImage = (sender, data) => {
+    socket.emit('send', 'image', sender, data);
   };
 
   return { chats, error, send, remove, sendImage };

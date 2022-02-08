@@ -35,9 +35,12 @@ function App() {
       return;
     }
 
-    const objectUrl = URL.createObjectURL(selectedFile);
-
-    sendImage(nickName, objectUrl);
+    const reader = new FileReader();
+    reader.onload = function() {
+      const base64 = this.result.replace(/.*base64,/, '');
+      sendImage(nickName, base64);
+    };
+    reader.readAsDataURL(selectedFile);
   };
 
   const [message, setMessage] = useState("");
