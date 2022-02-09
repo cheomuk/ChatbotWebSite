@@ -1,9 +1,9 @@
-from config.DatabaseConfig import *
-from Database import Database
-from Preprocess import Preprocess
-from FindAnswer import FindAnswer
-from models.intent.IntentModel import IntentModel
-from models.ner.NerModel import NerModel
+from deep.config.DatabaseConfig import *
+from deep.Database import Database
+from deep.Preprocess import Preprocess
+from deep.FindAnswer import FindAnswer
+from deep.models.intent.IntentModel import IntentModel
+from deep.models.ner.NerModel import NerModel
 
 
 class ChatbotTest:

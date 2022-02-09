@@ -1,6 +1,6 @@
 import pymysql
 import openpyxl
-from config.DatabaseConfig import *  # DB 접속 정보 불러오기
+from deep.config.DatabaseConfig import *  # DB 접속 정보 불러오기
 
 
 # 학습 데이터 초기화
@@ -25,11 +25,11 @@ def insert_data(db, xls_row):
     intent, ner, query, answer, answer_img_url = xls_row
 
     sql = '''
-        INSERT chatbot_train_data(intent, ner, query, answer)
+        INSERT chatbot_train_data(intent, ner, query, answer, answer_image)
         values(
-            '%s', '%s', '%s', '%s'
+            '%s', '%s', '%s', '%s', '%s'
         )
-    ''' % (intent.value, ner.value, query.value, answer.value)
+    ''' % (intent.value, ner.value, query.value, answer.value, answer_img_url.value)
 
     # 엑셀에서 불러온 cell에 데이터가 없는 경우 null로 치환
     sql = sql.replace("'None'", "null")
@@ -48,7 +48,6 @@ try:
         user=DB_USER,
         passwd=DB_PASSWORD,
         db=DB_NAME,
-        port=DB_PORT,
         charset='utf8'
     )
 

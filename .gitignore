@@ -116,3 +116,12 @@ ChatbotTest.cpython-38.pyc
 
 # Upload image files
 */public/image
+ChatbotTest.cpython-39.pyc
+Database.cpython-39.pyc
+FindAnswer.cpython-39.pyc
+deep/__pycache__/Preprocess.cpython-39.pyc
+deep/config/__pycache__/DatabaseConfig.cpython-39.pyc
+deep/config/__pycache__/GlobalParams.cpython-39.pyc
+deep/engine_tool/__pycache__/BotServer.cpython-38.pyc
+deep/models/intent/__pycache__/IntentModel.cpython-39.pyc
+deep/models/ner/__pycache__/NerModel.cpython-39.pyc

@@ -1,6 +1,6 @@
 import socket
 import json
-from config.DatabaseConfig import *
+from deep.config.DatabaseConfig import *
 
 # 챗봇 엔진 서버 접속 정보
 host = DB_HOST  # 챗봇 엔진 서버 IP 주소

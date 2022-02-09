@@ -1,6 +1,6 @@
 import asyncio
 import websockets
-from config.DatabaseConfig import *
+from deep.config.DatabaseConfig import *
 
 
 class Client:

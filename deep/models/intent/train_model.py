@@ -2,28 +2,29 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import preprocessing
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense, Embedding, Dropout, Conv1D, GlobalMaxPool1D, concatenate
-from Preprocess import Preprocess
-from config.GlobalParams import MAX_SEQ_LEN
+from tensorflow.keras.layers import Input, Embedding, Dense, Dropout, Conv1D, GlobalMaxPool1D, concatenate
 
-train_file = 'total_train-data.csv'
+
+train_file = "total_train-data.csv"
 data = pd.read_csv(train_file, delimiter=',')
 queries = data['query'].tolist()
 intents = data['intent'].tolist()
 
-p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
-               userdic='../user_dic.tsv')
+from deep.Preprocess import Preprocess
+p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict.bin',
+               userdic='../../user_dic.tsv')
 
 sequences = []
-for sentencs in queries:
-    pos = p.pos(sentencs)
-    keyword = p.get_keywords(pos, without_tag=True)
-    seq = p.get_wordidx_sequence(keyword)
+for sentence in queries:
+    pos = p.pos(sentence)
+    keywords = p.get_keywords(pos, without_tag=True)
+    seq = p.get_wordidx_sequence(keywords)
     sequences.append(seq)
 
 
+from deep.config.GlobalParams import MAX_SEQ_LEN
 padded_seqs = preprocessing.sequence.pad_sequences(sequences, maxlen=MAX_SEQ_LEN, padding='post')
-# (105658, 15)
+
 print(padded_seqs.shape)
 print(len(intents)) #105658
 
@@ -40,7 +41,7 @@ test_ds = ds.skip(train_size + val_size).take(test_size).batch(20)
 
 dropout_prob = 0.5
 EMB_SIZE = 128
-EPOCH = 5
+EPOCH = 20
 VOCAB_SIZE = len(p.word_index) + 1
 
 input_layer = Input(shape=(MAX_SEQ_LEN,))
@@ -84,6 +85,6 @@ model.fit(train_ds, validation_data=val_ds, epochs=EPOCH, verbose=1)
 
 loss, accuracy = model.evaluate(test_ds, verbose=1)
 print('Accuracy: %f' % (accuracy * 100))
-print('loss: %f' % loss)
+print('loss: %f' % (loss))
 
 model.save('intent_model.h5')
