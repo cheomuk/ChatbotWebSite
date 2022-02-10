@@ -19,7 +19,7 @@
 ## 주 사용 언어
 - HTML, CSS, JS, Python
 
-## 사용된 툴/사이트
+## 사용된 툴/라이브러리
 - VSCode, Node.js, Postman, Tensorflow, React
 
 ## 구현 주의사항
